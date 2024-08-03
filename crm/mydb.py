@@ -4,7 +4,7 @@ import MySQLdb
 dataBase = MySQLdb.connect(
     host='localhost',
     user='caroline',
-    password='Carolinetgn94!'
+    password='NewP@ssw0rd!2024'
 )
 
 cursorObject = dataBase.cursor()
