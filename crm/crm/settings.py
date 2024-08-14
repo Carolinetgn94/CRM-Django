@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9lp4vg2fe_&l_-bf+rt(t8a+gc2(msn%71ky2tp9-q%eagb5=%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['https://crm-django-krxu.onrender.com', 'localhost']
 
@@ -69,8 +69,10 @@ DATABASES = {
         'NAME': 'Caro',
         'USER': 'caroline',
         'PASSWORD': 'NewP@ssw0rd!2024',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'HOST': '',
+        'OPTIONS': {
+            'unix_socket': '/tmp/mysql.sock',
+        },
     }
 }
 
