@@ -1,5 +1,7 @@
 
 from pathlib import Path
+import dj_database_url
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -14,7 +16,7 @@ SECRET_KEY = 'django-insecure-9lp4vg2fe_&l_-bf+rt(t8a+gc2(msn%71ky2tp9-q%eagb5=%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://crm-django-krxu.onrender.com', 'localhost']
+ALLOWED_HOSTS = ['crm-django-krxu.onrender.com', 'localhost']
 
 
 # Application definition
@@ -64,16 +66,9 @@ WSGI_APPLICATION = 'crm.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Caro',
-        'USER': 'caroline',
-        'PASSWORD': 'NewP@ssw0rd!2024',
-        'HOST': '',
-        'OPTIONS': {
-            'unix_socket': '/tmp/mysql.sock',
-        },
-    }
+    'default': dj_database_url.config(
+        default=f"mysql://{os.getenv('DB_USER', 'caroline')}:{os.getenv('DB_PASSWORD', 'NewP@ssw0rd!2024')}@localhost/{os.getenv('DB_NAME', 'Caro')}"
+    )
 }
 
 
